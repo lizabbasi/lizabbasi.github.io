@@ -38,8 +38,8 @@ img { max-width: 100%; }
 
 /* header */
 .nav { position: sticky; top: 0; z-index: 10; background: rgba(13,35,71,.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--edge); }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
-.who { margin: 0; display: flex; align-items: baseline; gap: 4px 14px; flex-wrap: wrap; }
+.nav .wrap { max-width: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+.who { margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
 .brand { font-family: var(--display); font-size: 21px; color: var(--white); text-decoration: none; }
 .major { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--sky); }
 .right { display: flex; align-items: center; gap: 22px; }
@@ -61,7 +61,7 @@ img { max-width: 100%; }
 @keyframes rock { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
 
 /* hero */
-.hero { padding: 64px 0 40px; text-align: center; }
+.hero { position: relative; padding: 64px 0 40px; text-align: center; }
 .hi { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 5vw, 54px); line-height: 1.05; color: var(--white); margin: 0; }
 .tagline { font: 500 clamp(17px, 2.2vw, 21px) var(--body); color: var(--sky); margin: 12px 0 0; }
 .typed-line { font: 400 clamp(15px, 1.8vw, 18px) var(--mono); color: var(--pastel); min-height: 1.7em; margin: 12px 0 0; }
@@ -96,7 +96,6 @@ img { max-width: 100%; }
 /* sections */
 .block { padding: 72px 0; border-top: 1px solid var(--edge); scroll-margin-top: 60px; }
 .block-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
-.num { font: 500 13px var(--mono); color: var(--cornflower); }
 .block h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 4vw, 40px); color: var(--white); margin: 0; line-height: 1.1; }
 .lead { font-size: 18px; color: var(--pastel); max-width: 62ch; margin: 0 0 14px; }
 .body { color: var(--soft); max-width: 62ch; margin: 0 0 14px; }
@@ -199,7 +198,6 @@ img { max-width: 100%; }
 .lbnav[hidden] { display: none; }
 .lbnav button { position: static; width: auto; height: auto; border-radius: 8px; padding: 7px 12px; font: 500 13px var(--mono); background: var(--sky); color: var(--ink); }
 
-.hero-wrap { position: relative; }
 .contact { position: absolute; left: 24px; top: 8px; display: flex; flex-direction: column; gap: 10px; }
 .contact a { position: relative; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; color: var(--sky); background: var(--panel); border: 1px solid var(--edge); transition: background .15s, color .15s, transform .15s; }
 .contact a:hover, .contact a:focus-visible { background: var(--sky); color: var(--ink); transform: translateX(2px); }
@@ -207,7 +205,7 @@ img { max-width: 100%; }
 .contact svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .contact a::after { content: attr(data-tip); position: absolute; left: 52px; top: 50%; transform: translateY(-50%); white-space: nowrap; font: 500 12px var(--mono); color: var(--ink); background: var(--sky); padding: 4px 9px; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .15s; }
 .contact a:hover::after, .contact a:focus-visible::after { opacity: 1; }
-@media (max-width: 900px) { .contact { position: static; flex-direction: row; justify-content: center; margin: 0 0 22px; } .contact a::after { display: none; } }
+@media (max-width: 900px) { .contact { position: static; flex-direction: row; justify-content: flex-start; margin: 0 0 22px; } .contact a::after { display: none; } }
 .ghostbtn { background: transparent; color: var(--sky); box-shadow: inset 0 0 0 1.5px rgba(180,212,251,.5); }
 .ghostbtn:hover { background: rgba(180,212,251,.12); }
 .finding { font-size: 14.5px; color: var(--pastel); background: rgba(180,212,251,.07); border-left: 3px solid var(--sky); padding: 10px 12px; border-radius: 0 8px 8px 0; margin: 12px 0 0 !important; }
@@ -309,7 +307,7 @@ footer a { color: var(--sky); }
 
   <section class="block" id="about">
     <div class="wrap">
-      <div class="block-head"><span class="num">01</span><h2>About me</h2></div>
+      <div class="block-head"><h2>About me</h2></div>
       <div class="two">
         <div>
           <p class="lead">I dig into how the world around me works, and then I work on making it better. Driven by curiosity, fueled by caffeine.</p>
@@ -343,7 +341,7 @@ footer a { color: var(--sky); }
 
   <section class="block" id="projects">
     <div class="wrap">
-      <div class="block-head"><span class="num">02</span><h2>Projects</h2></div>
+      <div class="block-head"><h2>Projects</h2></div>
       <figure class="feature" style="margin-left:0;margin-right:0">
         <img src="img/common-ground.jpg" alt="Aliza holding the $500 Empathy Tech Innovation Challenge check made out to Common Ground" loading="lazy">
         <figcaption>
@@ -386,7 +384,7 @@ footer a { color: var(--sky); }
 
   <section class="block" id="experience">
     <div class="wrap">
-      <div class="block-head"><span class="num">03</span><h2>Experience</h2></div>
+      <div class="block-head"><h2>Experience</h2></div>
       <ul class="timeline">
         <li><span class="when">Mar to Sep 2026</span><div><h3>Business Analyst Co-op, Exelon</h3>
           <ul class="pts">
@@ -421,7 +419,7 @@ footer a { color: var(--sky); }
 
   <section class="block" id="life">
     <div class="wrap">
-      <div class="block-head"><span class="num">04</span><h2>Life</h2></div>
+      <div class="block-head"><h2>Life</h2></div>
       <p class="lead">Always moving, usually caffeinated, often holding a mic I volunteered for.</p>
       <div class="cards">
         <div class="card"><h3>Soccer</h3><p>Lifelong fan, and I referee games at Drexel. Ask me about the economics of transfer fees.</p></div>
