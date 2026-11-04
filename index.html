@@ -1,1 +1,545 @@
-<title>liz</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aliza Abbasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Rozha+One&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* One calm scrolling page: hero with terminal and cat, then About, Projects, Experience, Life as blocks */
+  --ink: #0a1a33;
+  --bg: #0d2347;
+  --panel: #122d58;
+  --panel2: #163566;
+  --navy: #173f7a;
+  --cobalt: #2f6fd6;
+  --cornflower: #6fa5ec;
+  --sky: #b4d4fb;
+  --pastel: #e1eefd;
+  --soft: #a7bfdf;
+  --edge: rgba(180,212,251,.14);
+  --white: #ffffff;
+  --display: "DM Serif Display", Georgia, serif;
+  --tilefont: "Rozha One", Georgia, serif;
+  --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "Courier New", monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--pastel); font-family: var(--body); line-height: 1.6; }
+a { color: inherit; }
+img { max-width: 100%; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* header */
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(13,35,71,.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--edge); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+.who { margin: 0; display: flex; align-items: baseline; gap: 4px 14px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-size: 21px; color: var(--white); text-decoration: none; }
+.major { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--sky); }
+.right { display: flex; align-items: center; gap: 22px; }
+.links { display: flex; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.links a { font-size: 14px; font-weight: 500; color: var(--soft); text-decoration: none; }
+.links a:hover { color: var(--white); }
+@media (max-width: 860px) { .links { display: none; } }
+.btn.primary {
+  display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+  background: var(--sky); color: var(--ink); font: 400 17px/1 var(--tilefont);
+  padding: 5px 16px 5px 8px; border-radius: 999px;
+  box-shadow: 0 0 0 4px rgba(180,212,251,.14);
+  transition: transform .15s, background .15s; white-space: nowrap;
+}
+.btn.primary:hover { background: var(--pastel); transform: translateY(-2px) rotate(-1.5deg); }
+.btn.primary:focus-visible, .links a:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+.btn.primary .mugcat { width: 30px; height: 30px; transform-origin: 50% 90%; animation: rock 2.8s ease-in-out infinite; }
+.btn.primary:hover .mugcat { animation-duration: .8s; }
+@keyframes rock { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+
+/* hero */
+.hero { padding: 64px 0 40px; text-align: center; }
+.hi { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 5vw, 54px); line-height: 1.05; color: var(--white); margin: 0; }
+.tagline { font: 500 clamp(17px, 2.2vw, 21px) var(--body); color: var(--sky); margin: 12px 0 0; }
+.typed-line { font: 400 clamp(15px, 1.8vw, 18px) var(--mono); color: var(--pastel); min-height: 1.7em; margin: 12px 0 0; }
+.caret { display: inline-block; width: 2px; height: 1.1em; background: var(--sky); margin-left: 2px; vertical-align: -3px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.side { position: relative; max-width: 680px; margin: 36px auto 0; padding-bottom: 120px; text-align: left; }
+.term { background: #0a1c3b; border: 1px solid var(--edge); border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,.35); overflow: hidden; }
+.term-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; background: #102a54; border-bottom: 1px solid var(--edge); }
+.term-bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--cobalt); display: block; }
+.term-bar i:nth-child(2) { background: var(--cornflower); } .term-bar i:nth-child(3) { background: var(--sky); }
+.term-bar span { margin-left: 8px; font: 400 12px var(--mono); color: var(--soft); }
+.term-body { font: 400 13.5px/1.7 var(--mono); padding: 16px 18px 18px; height: 210px; overflow: hidden; color: var(--pastel); white-space: pre-wrap; word-break: break-word; }
+.term-body .p { color: var(--cornflower); } .term-body .o { color: var(--soft); } .term-body .ok { color: #8fe0c0; }
+.cat { position: absolute; right: -30px; bottom: 0; width: 250px; }
+.cat svg { width: 100%; height: auto; display: block; overflow: visible; }
+.tail { transform-origin: 152px 128px; animation: swish 2.4s ease-in-out infinite; }
+@keyframes swish { 0%,100% { transform: rotate(0); } 50% { transform: rotate(16deg); } }
+.eyes { transform-origin: 100px 60px; animation: blinkcat 4.5s infinite; }
+@keyframes blinkcat { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+.pawL { animation: tap .32s ease-in-out infinite alternate; }
+.pawR { animation: tap .32s ease-in-out infinite alternate-reverse; }
+@keyframes tap { to { transform: translateY(-4px); } }
+.ball { transform-box: fill-box; transform-origin: center; animation: roll 1.8s ease-in-out infinite; }
+@keyframes roll { 0%,100% { transform: translateX(0) rotate(0); } 50% { transform: translateX(6px) rotate(70deg); } }
+.foot { animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateX(4px); } }
+@media (max-width: 640px) { .cat { right: 50%; transform: translateX(50%); width: 210px; } }
+.scroll { font: 500 12px var(--mono); color: var(--soft); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 8px; }
+.scroll svg { animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(5px); } }
+
+/* sections */
+.block { padding: 72px 0; border-top: 1px solid var(--edge); scroll-margin-top: 60px; }
+.block-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+.num { font: 500 13px var(--mono); color: var(--cornflower); }
+.block h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 4vw, 40px); color: var(--white); margin: 0; line-height: 1.1; }
+.lead { font-size: 18px; color: var(--pastel); max-width: 62ch; margin: 0 0 14px; }
+.body { color: var(--soft); max-width: 62ch; margin: 0 0 14px; }
+.label { font: 500 11.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sky); margin: 0 0 10px; }
+.two { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 28px; } }
+.facts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--edge); }
+.facts li { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--edge); font-size: 15px; }
+.facts b { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--cornflower); min-width: 88px; padding-top: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.chips span { font-size: 13px; color: var(--pastel); background: var(--panel); border: 1px solid var(--edge); padding: 3px 11px; border-radius: 999px; }
+.stack { display: grid; gap: 22px; margin-top: 28px; }
+
+.cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.card { background: var(--panel); border: 1px solid var(--edge); border-radius: 12px; padding: 18px 20px; }
+.card .label { margin-bottom: 6px; }
+.card h3 { font-size: 17px; color: var(--white); margin: 0; }
+.card p { font-size: 15px; color: var(--soft); margin: 6px 0 0; }
+.card b, .pts b { color: var(--white); font-weight: 600; }
+.feature { display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: center; background: var(--panel); border: 1px solid var(--edge); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.feature img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 35%; border-radius: 10px; display: block; }
+.feature h3 { font-family: var(--display); font-weight: 400; font-size: 28px; color: var(--white); margin: 0; }
+.feature p { color: var(--soft); margin: 8px 0 0; max-width: 56ch; }
+@media (max-width: 600px) { .feature { grid-template-columns: 1fr; } }
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline > li { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 22px 0; border-top: 1px solid var(--edge); }
+.timeline > li:last-child { border-bottom: 1px solid var(--edge); }
+.when { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--cornflower); padding-top: 4px; }
+.timeline h3 { font-size: 18px; color: var(--white); margin: 0; }
+.sub { font-size: 14px; color: var(--soft); margin: 2px 0 0; }
+.pts { margin: 10px 0 0; padding-left: 18px; color: var(--soft); font-size: 15px; }
+.pts li { margin: 4px 0; }
+@media (max-width: 600px) { .timeline > li { grid-template-columns: 1fr; gap: 4px; } }
+
+.photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+.photo { margin: 0; background: var(--panel); border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; }
+.photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.photo figcaption { font: 400 12px var(--mono); color: var(--soft); padding: 10px 12px; }
+@media (max-width: 860px) { .photos { grid-template-columns: repeat(2, 1fr); } }
+.qotw { margin-top: 28px; background: var(--panel2); border: 1px solid var(--edge); border-radius: 12px; padding: 20px 22px; }
+.qotw p { margin: 4px 0 12px; color: var(--white); font-weight: 600; }
+.qotw p.label { color: var(--sky); font-weight: 500; margin: 0 0 6px; }
+.qotw button { font: 500 13px var(--mono); background: var(--sky); color: var(--ink); border: 0; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+.qotw button:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+.qotw .answer { color: var(--soft); font-weight: 400; margin: 14px 0 0; }
+
+
+.portrait { margin: 0; }
+.portrait img { display: block; width: 100%; max-width: 260px; aspect-ratio: 4/5; object-fit: cover; border-radius: 16px; border: 1px solid var(--edge); box-shadow: 0 20px 40px rgba(0,0,0,.3); margin-left: auto; }
+@media (max-width: 760px) { .portrait img { margin: 0 auto; } }
+.certs { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.cert { text-align: left; font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--edge); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 3px; cursor: pointer; transition: border-color .15s, transform .15s; }
+.cert:hover { border-color: var(--cornflower); transform: translateY(-2px); }
+.cert:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+.cert img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 8px; margin-bottom: 8px; background: #fff; }
+.cert.plain { cursor: default; justify-content: center; min-height: 96px; }
+.cert.plain:hover { transform: none; border-color: var(--edge); }
+.cert-name { font-weight: 700; color: var(--white); font-size: 15px; }
+.cert-sub { font-size: 13px; color: var(--soft); }
+.cert-view { font: 500 12px var(--mono); color: var(--sky); margin-top: 4px; }
+.more { margin-top: 10px; }
+.more summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; font: 500 12.5px var(--mono); color: var(--sky); padding: 5px 12px; border: 1px solid rgba(180,212,251,.35); border-radius: 999px; }
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after { content: "+"; font-size: 14px; }
+.more[open] summary::after { content: "\2212"; }
+.more summary:hover { background: rgba(180,212,251,.1); }
+.more summary:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+.more .pts { margin-top: 12px; }
+.pts a { color: var(--sky); }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(5,14,30,.82); display: grid; place-items: center; padding: 24px; }
+.lightbox[hidden] { display: none; }
+.lightbox figure { position: relative; margin: 0; max-width: min(960px, 100%); }
+.lightbox img { display: block; max-width: 100%; max-height: calc(100dvh - 80px); border-radius: 10px; background: #fff; }
+.lightbox button { position: absolute; top: -14px; right: -14px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--white); color: var(--ink); cursor: pointer; font-size: 15px; }
+
+.skillgrid { display: grid; gap: 18px 36px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 700px) { .skillgrid { grid-template-columns: 1fr; } }
+.skillcat { font-size: 14px; font-weight: 600; color: var(--white); margin: 0 0 8px; }
+.cert-view.pending { color: #ffd98a; }
+.more-body { margin-top: 4px; }
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 14px; }
+.chart { padding: 0; border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; background: #fff; cursor: zoom-in; text-align: left; font: inherit; display: flex; flex-direction: column; }
+.chart img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.chart span { font: 500 11px var(--mono); color: var(--ink); background: var(--pastel); padding: 6px 8px; line-height: 1.35; flex: 1; }
+.chart:hover { border-color: var(--sky); }
+.chart:focus-visible, .deckbtn:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+.btnrow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.deckbtn { font: 600 13px var(--body); background: var(--sky); color: var(--ink); border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; text-decoration: none !important; display: inline-block; }
+.deckbtn:hover { background: var(--pastel); }
+.deckbtn.soon { background: transparent; color: var(--soft); border: 1px dashed rgba(180,212,251,.35); cursor: default; }
+#projects .cards { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
+@media (max-width: 480px) { #projects .cards { grid-template-columns: 1fr; } }
+.coef { margin: 14px 0 0; background: #0a1c3b; border: 1px solid var(--edge); border-radius: 10px; padding: 12px; }
+.coef svg { width: 100%; height: auto; display: block; }
+.coef figcaption { font-size: 13px; color: var(--soft); margin-top: 6px; }
+.strip3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; max-width: 560px; }
+.strip3 img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; border: 1px solid var(--edge); display: block; }
+.lbnav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; font: 500 13px var(--mono); color: var(--soft); }
+.lbnav[hidden] { display: none; }
+.lbnav button { position: static; width: auto; height: auto; border-radius: 8px; padding: 7px 12px; font: 500 13px var(--mono); background: var(--sky); color: var(--ink); }
+
+.hero-wrap { position: relative; }
+.contact { position: absolute; left: 24px; top: 8px; display: flex; flex-direction: column; gap: 10px; }
+.contact a { position: relative; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; color: var(--sky); background: var(--panel); border: 1px solid var(--edge); transition: background .15s, color .15s, transform .15s; }
+.contact a:hover, .contact a:focus-visible { background: var(--sky); color: var(--ink); transform: translateX(2px); }
+.contact a:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+.contact svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.contact a::after { content: attr(data-tip); position: absolute; left: 52px; top: 50%; transform: translateY(-50%); white-space: nowrap; font: 500 12px var(--mono); color: var(--ink); background: var(--sky); padding: 4px 9px; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .15s; }
+.contact a:hover::after, .contact a:focus-visible::after { opacity: 1; }
+@media (max-width: 900px) { .contact { position: static; flex-direction: row; justify-content: center; margin: 0 0 22px; } .contact a::after { display: none; } }
+.ghostbtn { background: transparent; color: var(--sky); box-shadow: inset 0 0 0 1.5px rgba(180,212,251,.5); }
+.ghostbtn:hover { background: rgba(180,212,251,.12); }
+.finding { font-size: 14.5px; color: var(--pastel); background: rgba(180,212,251,.07); border-left: 3px solid var(--sky); padding: 10px 12px; border-radius: 0 8px 8px 0; margin: 12px 0 0 !important; }
+footer { border-top: 1px solid var(--edge); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 24px; padding-bottom: 32px; font: 400 13px var(--mono); color: var(--soft); }
+footer a { color: var(--sky); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <p class="who"><a class="brand" href="#top">Aliza Abbasi</a><span class="major">Economics &amp; Data Science · Drexel University · Philadelphia, PA</span></p>
+    <div class="right">
+      <ul class="links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#life">Life</a></li>
+      </ul>
+      <a class="btn primary" id="coffeeBtn" href="https://calendar.app.google/o5outb6EdfUkBTTS6" target="_blank" rel="noopener">
+    <svg class="mugcat" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M9 14 L11 4 L17 11 Z M31 14 L29 4 L23 11 Z" fill="#6fa5ec"/>
+      <circle cx="20" cy="17" r="11" fill="#6fa5ec"/>
+      <circle cx="16" cy="16" r="1.6" fill="#0a1a33"/><circle cx="24" cy="16" r="1.6" fill="#0a1a33"/>
+      <path d="M18.6 20 H21.4 L20 21.4 Z" fill="#f2a0b5"/>
+      <rect x="12" y="24" width="14" height="12" rx="3" fill="#ffffff" stroke="#0a1a33" stroke-width="1.4"/>
+      <path d="M26 27 h2.5 a2.5 2.5 0 0 1 0 5 H26" fill="none" stroke="#0a1a33" stroke-width="1.4"/>
+      <ellipse cx="12.5" cy="28" rx="2.6" ry="2.2" fill="#6fa5ec"/><ellipse cx="25.5" cy="28" rx="2.6" ry="2.2" fill="#6fa5ec"/>
+      <path class="steam1" d="M17 22 c-1 -2 1 -3 0 -5" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+    </svg>
+    Book a coffee chat
+  </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-wrap">
+      <nav class="contact" aria-label="Contact">
+        <a href="https://www.linkedin.com/in/alizaabbasi" target="_blank" rel="noopener" aria-label="LinkedIn: linkedin.com/in/alizaabbasi" data-tip="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+        <a href="mailto:aaa582@drexel.edu" aria-label="Email: aaa582@drexel.edu" data-tip="aaa582@drexel.edu"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="tel:+12156691792" aria-label="Phone: (215) 669-1792" data-tip="(215) 669-1792"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+        <a href="https://www.instagram.com/sloppyotter/" target="_blank" rel="noopener" aria-label="Instagram: @sloppyotter" data-tip="@sloppyotter"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      </nav>
+      <h1 class="hi">Hi, I'm Aliza.</h1>
+      <p class="tagline">Exploring the intersection of AI, data and business.</p>
+      <p class="typed-line" aria-live="polite"><span id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+      <div class="side">
+        <div class="term" role="img" aria-label="Terminal showing a playful script about Aliza">
+          <div class="term-bar"><i></i><i></i><i></i><span>aliza@drexel: ~</span></div>
+          <div class="term-body" id="term" aria-hidden="true"></div>
+        </div>
+        <div class="cat" aria-hidden="true">
+          <svg viewBox="0 0 230 170">
+            <ellipse cx="118" cy="160" rx="95" ry="7" fill="rgba(0,0,0,.35)"/>
+            <!-- tail -->
+            <path class="tail" d="M150 128 C178 124 190 100 182 80 C178 70 168 72 172 82 C178 98 168 114 148 118 Z" fill="#7f9fc9"/>
+            <!-- body -->
+            <ellipse cx="102" cy="122" rx="48" ry="36" fill="#9cb8de"/>
+            <!-- ears -->
+            <path d="M74 46 L78 18 L96 38 Z" fill="#9cb8de"/><path d="M78 40 L80 26 L90 37 Z" fill="#f2b8c6"/>
+            <path d="M126 46 L122 18 L104 38 Z" fill="#9cb8de"/><path d="M122 40 L120 26 L110 37 Z" fill="#f2b8c6"/>
+            <!-- head -->
+            <circle cx="100" cy="60" r="30" fill="#b3cbea"/>
+            <path d="M88 34 L91 44 M100 31 V42 M112 34 L109 44" stroke="#8aa8d2" stroke-width="2.5" stroke-linecap="round"/>
+            <g class="eyes"><ellipse cx="89" cy="60" rx="4" ry="5.5" fill="#0b1a33"/><ellipse cx="111" cy="60" rx="4" ry="5.5" fill="#0b1a33"/>
+              <circle cx="90.5" cy="58" r="1.4" fill="#fff"/><circle cx="112.5" cy="58" r="1.4" fill="#fff"/></g>
+            <path d="M97 68 H103 L100 71 Z" fill="#f2a0b5"/>
+            <path d="M100 71 C98 75 94 75 92 73 M100 71 C102 75 106 75 108 73" stroke="#0b1a33" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M80 68 H66 M80 72 L67 76 M120 68 H134 M120 72 L133 76" stroke="#e8f0fb" stroke-width="1.2" stroke-linecap="round"/>
+            <!-- laptop -->
+            <path d="M52 154 H150 L144 146 H58 Z" fill="#6c9be0"/>
+            <rect x="60" y="92" width="82" height="56" rx="5" fill="#163a6b"/>
+            <rect x="60" y="92" width="82" height="56" rx="5" fill="none" stroke="#2a5db0" stroke-width="2"/>
+            <circle cx="101" cy="120" r="7" fill="none" stroke="#a9caf2" stroke-width="2"/>
+            <path d="M98 120 L100 122 L104 117" stroke="#a9caf2" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- paws typing -->
+            <ellipse class="pawL" cx="84" cy="92" rx="9" ry="6" fill="#b3cbea"/>
+            <ellipse class="pawR" cx="118" cy="92" rx="9" ry="6" fill="#b3cbea"/>
+            <!-- foot + ball -->
+            <ellipse class="foot" cx="156" cy="153" rx="11" ry="6" fill="#b3cbea"/>
+            <g class="ball">
+              <circle cx="182" cy="146" r="13" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <path d="M182 140 L187.5 144 L185.5 150.5 H178.5 L176.5 144 Z" fill="#000000"/>
+              <path d="M182 140 V133 M187.5 144 L194.8 141.8 M185.5 150.5 L189.8 156.8 M178.5 150.5 L174.2 156.8 M176.5 144 L169.2 141.8" stroke="#000000" stroke-width="1.4"/>
+              <path d="M176 133.8 L182 133 L188 133.8 L186 136.5 H178 Z M194.6 141.5 L195 147 L192 145 Z M169.4 141.5 L169 147 L172 145 Z M189.6 156.9 L184 158.8 L186 155.5 Z M174.4 156.9 L180 158.8 L178 155.5 Z" fill="#000000"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <a class="scroll" href="#about">Scroll to explore
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="block-head"><span class="num">01</span><h2>About me</h2></div>
+      <div class="two">
+        <div>
+          <p class="lead">I dig into how the world around me works, and then I work on making it better. Driven by curiosity, fueled by caffeine.</p>
+          <p class="body">I spend my time on hackathons, case study competitions and research problems, turning messy questions into real solutions.</p>
+          <p class="body">I study Economics at Drexel University, with minors in AI/Machine Learning and Data Science. I use policy, AI and analysis to understand and manage systems, and I build with data to make them smarter.</p>
+        </div>
+        <figure class="portrait"><img src="img/aliza.jpg" alt="Portrait of Aliza Abbasi smiling outside in the sun"></figure>
+      </div>
+      <div class="stack">
+        <div><p class="label">Skills</p>
+          <div class="skillgrid">
+            <div><p class="skillcat">Languages</p><p class="chips"><span>Python</span><span>SQL</span><span>R</span><span>Stata</span><span>C</span><span>Java</span><span>Bash</span><span>CSS</span></p></div>
+            <div><p class="skillcat">Libraries and frameworks</p><p class="chips"><span>pandas</span><span>NumPy</span><span>Seaborn</span><span>TensorFlow</span><span>PyTorch</span></p></div>
+            <div><p class="skillcat">Cloud and AI</p><p class="chips"><span>AWS</span><span>Google Cloud</span><span>Snowflake</span><span>BigQuery</span><span>Google Colab</span><span>Hugging Face</span><span>Ollama</span><span>AI Agents</span></p></div>
+            <div><p class="skillcat">Tools and platforms</p><p class="chips"><span>Power BI</span><span>Tableau</span><span>Looker Studio</span><span>Power Automate</span><span>Excel</span><span>Google Sheets</span><span>SAP ERP</span><span>Jira</span><span>Confluence</span><span>Microsoft 365</span></p></div>
+          </div>
+        </div>
+        <div><p class="label">Certifications</p>
+          <div class="certs">
+            <button class="cert" type="button" data-img="img/cert-goldman.jpg" data-alt="Goldman Sachs Software Engineering Job Simulation certificate of completion">
+              <img src="img/cert-goldman.jpg" alt="" loading="lazy"><span class="cert-name">Goldman Sachs</span><span class="cert-sub">Software Engineering Job Simulation · Sep 2024</span><span class="cert-view">View credential</span></button>
+            <button class="cert" type="button" data-img="img/cert-mckinsey.jpg" data-alt="McKinsey.org Forward program acceptance letter">
+              <img src="img/cert-mckinsey.jpg" alt="" loading="lazy"><span class="cert-name">McKinsey.org</span><span class="cert-sub">Forward Program · 2026</span><span class="cert-view">View credential</span></button>
+            <div class="cert plain"><span class="cert-name">BCG X</span><span class="cert-sub">Introduction to Data for Decision Makers</span><span class="cert-view pending">In progress</span></div>
+          </div>
+        </div>
+        <div><p class="label">Around campus</p><p class="chips"><span>Mentor, Women in Science PHL</span><span>Peer Mentor, Drexel</span><span>Drexel Consulting Group</span><span>Drexel AI Club</span><span>Economics Society</span><span>Referee, Drexel Recreation Center</span><span>Founder's Scholarship</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="block-head"><span class="num">02</span><h2>Projects</h2></div>
+      <figure class="feature" style="margin-left:0;margin-right:0">
+        <img src="img/common-ground.jpg" alt="Aliza holding the $500 Empathy Tech Innovation Challenge check made out to Common Ground" loading="lazy">
+        <figcaption>
+          <p class="label">Founder · 1st prize · Sep 2026 to present</p>
+          <h3>Common Ground</h3>
+          <p>A free virtual study space inside Drexel's LMS for students with ADHD. Won the Empathy Tech Innovation Challenge.</p>
+          <details class="more"><summary>Click for more</summary><div class="more-body"><ul class="pts"><li>Built using competitive analysis, business strategy and AI tools, targeting the 3x higher dropout rate among students with ADHD</li><li>Designed an end to end, university funded model to help students overcome executive dysfunction, backed by an 85% success rate</li><li>Launched a live web prototype and secured funding for MVP development</li></ul><div class="btnrow"><a class="deckbtn" href="https://heartfelt-brioche-312e01.netlify.app/" target="_blank" rel="noopener">Try the live prototype ↗</a></div></div></details>
+        </figcaption>
+      </figure>
+      <div class="cards">
+        <div class="card"><p class="label">Runner up · team lead · Apr 2025</p><h3>PwC Case Study Competition</h3><p>Strategy for an aerospace client facing SAP S/4HANA transition risk and M&amp;A gaps.</p>
+          <details class="more"><summary>Click for more</summary><div class="more-body"><ul class="pts"><li>Led a cross functional team of 6 to turn client pain points into a data driven proposal</li><li>Built a 3 year cost benefit analysis projecting a <b>$164M net benefit</b> against a $225M tax liability</li><li>Designed a 3 phase ERP roadmap defining requirements and compliance controls</li></ul><div class="charts"><button class="chart" type="button" data-deck="pwc" data-page="2"><img src="decks/pwc/s-02.jpg" alt="The dual crisis" loading="lazy"><span>The dual crisis</span></button><button class="chart" type="button" data-deck="pwc" data-page="13"><img src="decks/pwc/s-13.jpg" alt="Cost benefit analysis" loading="lazy"><span>Cost benefit analysis</span></button><button class="chart" type="button" data-deck="pwc" data-page="14"><img src="decks/pwc/s-14.jpg" alt="ERP success with vs without compliance" loading="lazy"><span>ERP success with vs without compliance</span></button><button class="chart" type="button" data-deck="pwc" data-page="16"><img src="decks/pwc/s-16.jpg" alt="3 phase strategic plan" loading="lazy"><span>3 phase strategic plan</span></button></div><div class="btnrow"><button class="deckbtn" type="button" data-deck="pwc" data-page="1">View the full deck</button></div></div></details></div>
+        <div class="card"><p class="label">Research assistant · Mar to Oct 2026</p><h3>College Federal Reserve Challenge</h3><p>Modeled the FOMC and pitched a 2026 monetary policy recommendation.</p>
+          <details class="more"><summary>Click for more</summary><div class="more-body"><ul class="pts"><li>Analyzed the job market using Fed publications plus historical and political trends</li><li>Automated data collection in R through Fed data APIs</li><li>Charted quit rates, hiring speed, job openings and wage growth vs inflation to show a cooling market and paychecks falling behind prices</li></ul><div class="charts"><button class="chart" type="button" data-deck="fed" data-page="4"><img src="decks/fed/s-04.jpg" alt="The dual mandate" loading="lazy"><span>The dual mandate</span></button><button class="chart" type="button" data-deck="fed" data-page="7"><img src="decks/fed/s-07.jpg" alt="PCE inflation vs target" loading="lazy"><span>PCE inflation vs target</span></button><button class="chart" type="button" data-deck="fed" data-page="19"><img src="decks/fed/s-19.jpg" alt="Hiring and quit rates" loading="lazy"><span>Hiring and quit rates</span></button><button class="chart" type="button" data-deck="fed" data-page="21"><img src="decks/fed/s-21.jpg" alt="Real wages vs inflation" loading="lazy"><span>Real wages vs inflation</span></button></div><div class="btnrow"><button class="deckbtn" type="button" data-deck="fed" data-page="1">View the full deck</button></div></div></details></div>
+        <div class="card"><p class="label">Econometrics · Stata · Mar 2026</p><h3>Social Protection and Poverty</h3><p>Does social protection spending move poverty? A 32 country panel study.</p>
+          <details class="more"><summary>Click for more</summary><div class="more-body"><ul class="pts"><li>Built and cleaned an unbalanced panel of 32 countries from 2008 to 2023 using World Bank WDI data</li><li>Handled missing data and engineered a social protection feature from 4 expenditure variables</li><li>Ran pooled OLS and fixed effects models with robust standard errors to correct for heteroskedasticity</li></ul><figure class="coef"><svg viewBox="0 0 440 200" role="img" aria-label="Coefficient on social protection: pooled OLS minus 0.939, p equals 0.791; fixed effects 1.143, p equals 0.685">
+  <line x1="220" y1="20" x2="220" y2="170" stroke="#a7bfdf" stroke-width="1"/>
+  <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#a7bfdf">
+    <text x="220" y="188" text-anchor="middle">0</text><text x="100" y="188" text-anchor="middle">−1.5</text><text x="340" y="188" text-anchor="middle">+1.5</text>
+    <line x1="100" y1="170" x2="340" y2="170" stroke="rgba(180,212,251,.25)"/>
+  </g>
+  <rect x="144.9" y="44" width="75.1" height="34" rx="4" fill="#6fa5ec"/>
+  <rect x="220" y="110" width="91.4" height="34" rx="4" fill="#b4d4fb"/>
+  <g font-family="Manrope, sans-serif" font-size="12.5" fill="#ffffff">
+    <text x="138" y="66" text-anchor="end">Pooled OLS  −0.939</text>
+    <text x="318" y="132">Fixed effects  +1.143</text>
+  </g>
+  <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#a7bfdf">
+    <text x="138" y="82" text-anchor="end">p = 0.791</text><text x="318" y="148">p = 0.685</text>
+  </g>
+</svg><figcaption>Effect of social protection spending on poverty. The sign flips once country fixed effects are added, and neither is significant at 5%: a lesson in omitted variable bias.</figcaption></figure><div class="btnrow"><button class="deckbtn" type="button" data-deck="econ350" data-page="1">Read the paper</button></div></div></details></div>
+        <div class="card"><p class="label">Product manager · Philadelphia Codefest · Apr 2024</p><h3>Learnify</h3><p>An AI powered layer on top of Blackboard that already knows your courses, grades and syllabus.</p>
+          <details class="more"><summary>Click for more</summary><div class="more-body"><ul class="pts"><li>Surveyed students to find the biggest pain points in Blackboard and shaped the product around them</li><li>Defined features like AI assignment help that pulls course context straight from Blackboard, and a “what do I need on the next assignment” grade calculator using weights read from the syllabus</li><li>Scoped turning unstructured PDFs like syllabi into structured data the app could use</li><li>Partnered with an engineering teammate who stood up a Blackboard test server on AWS with Terraform and built the working frontend</li></ul><div class="btnrow"><a class="deckbtn" href="https://zohair-coder.github.io/hackathon-2024/" target="_blank" rel="noopener">See the live prototype ↗</a></div></div></details></div>
+        <div class="card"><p class="label">Research analyst · LeBow · Oct 2024</p><h3>Inflation and Exchange Rate Analysis</h3><p>How exchange rate swings connect to global economic trends and risk.</p>
+          <details class="more"><summary>Click for more</summary><div class="more-body"><ul class="pts"><li>Ran a comparative analysis to identify global economic trends and risks tied to exchange rate fluctuations</li><li>Built an analytical framework in Python that turned raw market data into business insights</li></ul><p class="finding"><b>What we found:</b> inflation in India and the US moves the INR/USD exchange rate. Higher inflation in India tends to weaken the rupee against the dollar, while lower US inflation keeps the dollar strong. Inflation matters, but it is only one of many forces behind the rate.</p><div class="charts"><button class="chart" type="button" data-deck="infl" data-page="1"><img src="decks/infl/s-01.jpg" alt="INR/USD and inflation trends" loading="lazy"><span>INR/USD and inflation trends</span></button><button class="chart" type="button" data-deck="infl" data-page="2"><img src="decks/infl/s-02.jpg" alt="Actual vs PPP expected rate" loading="lazy"><span>Actual vs PPP expected rate</span></button><button class="chart" type="button" data-deck="infl" data-page="3"><img src="decks/infl/s-03.jpg" alt="Correlation matrix" loading="lazy"><span>Correlation matrix</span></button><button class="chart" type="button" data-deck="infl" data-page="4"><img src="decks/infl/s-04.jpg" alt="Cleaned exchange and inflation data" loading="lazy"><span>Cleaned exchange and inflation data</span></button></div><div class="btnrow"><button class="deckbtn" type="button" data-deck="infl" data-page="1">View all charts</button></div></div></details></div>
+        <div class="card"><p class="label">Game theory · in progress</p><h3>Who Pays for AI Data Centers?</h3><p>A game theory model of AI data centers and who ends up carrying their energy costs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="block-head"><span class="num">03</span><h2>Experience</h2></div>
+      <ul class="timeline">
+        <li><span class="when">Mar to Sep 2026</span><div><h3>Business Analyst Co-op, Exelon</h3>
+          <ul class="pts">
+            <li>Ran the hard cover material recovery program end to end in Hyperion and Asset Suite 8</li>
+            <li>Automated manual Excel workflows with Power Automate, <b>60% efficiency gain</b></li>
+            <li>Built <b>50+ work order reports</b> for budget planning, plus compliance documentation</li>
+          </ul></div></li>
+        <li><span class="when">Mar to Sep 2025</span><div><h3>Data Science Co-op, URBN</h3>
+          <p class="sub">Urban Outfitters, Anthropologie, Free People and Nuuly</p>
+          <ul class="pts">
+            <li>Cleaned <b>6M+ order records</b> with SQL and Python, powering <b>$2.56M</b> in projected savings</li>
+            <li>Found <b>1.3M split shipment orders</b> in FY25 through BigQuery trend analysis; pitched forecasting fixes to leadership</li>
+            <li>Built Tableau, Power BI and Looker Studio dashboards tracking KPIs across every brand's fulfillment centers</li>
+            <li>Coordinated Agile delivery in Jira and Confluence</li>
+          </ul>
+          <div class="btnrow">
+            <button class="deckbtn" type="button" data-deck="dash" data-page="1">View my Looker Studio dashboards</button>
+            <button class="deckbtn ghostbtn" type="button" data-deck="coop" data-page="1">View my co-op presentation</button>
+          </div>
+          <div class="strip3">
+            <img src="img/urbn-sign.jpg" alt="Aliza at the URBN sign outside the Navy Yard campus" loading="lazy">
+            <img src="img/urbn-uo.jpg" alt="Aliza under the vintage Urban Outfitters sign" loading="lazy">
+            <img src="img/urbn-hq.jpg" alt="The yellow URBN headquarters building under a blue sky" loading="lazy">
+          </div></div></li>
+        <li><span class="when">Fall 2026 to present</span><div><h3>Office Assistant, DragonCard Office</h3>
+          <p class="sub">Drexel University · on campus</p></div></li>
+        <li><span class="when">Jan 2024 to present</span><div><h3>Referee, Drexel Recreation Center</h3>
+          <p class="sub">Drexel University · on campus</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="life">
+    <div class="wrap">
+      <div class="block-head"><span class="num">04</span><h2>Life</h2></div>
+      <p class="lead">Always moving, usually caffeinated, often holding a mic I volunteered for.</p>
+      <div class="cards">
+        <div class="card"><h3>Soccer</h3><p>Lifelong fan, and I referee games at Drexel. Ask me about the economics of transfer fees.</p></div>
+        <div class="card"><h3>Attending conferences</h3><p>Surrounding myself with like-minded people who love big questions as much as I do.</p></div>
+        <div class="card"><h3>Public speaking</h3><p>I put myself in the uncomfortable spot on purpose. Instant regret, zero regrets.</p></div>
+      </div>
+      <div class="photos">
+        <figure class="photo"><img src="img/nabe.jpg" alt="Aliza at the NABE Economic Policy Conference in Washington, DC" loading="lazy"><figcaption>NABE Economic Policy Conference, Washington DC</figcaption></figure>
+        <figure class="photo"><img src="img/close-school.jpg" alt="Aliza presenting in front of a screen at Drexel's Close School" loading="lazy"><figcaption>Presenting at Drexel's Close School</figcaption></figure>
+        <figure class="photo"><img src="img/on-stage.jpg" alt="Aliza speaking on stage with a microphone" loading="lazy"><figcaption>Mic in hand. Instant regret, zero regrets.</figcaption></figure>
+        <figure class="photo"><img src="img/polaroid.jpg" alt="A polaroid of a group of friends tucked into a bouquet of flowers" loading="lazy"><figcaption>Moments worth keeping, on film.</figcaption></figure>
+      </div>
+      <div class="qotw">
+        <p class="label">Econ question of the week</p>
+        <p>Why should a penalty taker sometimes shoot straight down the middle?</p>
+        <button type="button" id="reveal">Reveal my answer</button>
+        <p class="answer" id="answer" hidden>It's a game between kicker and keeper. If the kicker always picks a side, the keeper learns it and dives there. The best strategy is to mix it up so the keeper can't predict anything, a mixed strategy Nash equilibrium. Studies of pro penalty kicks find players randomize almost exactly how the theory says they should.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Viewer">
+  <figure><img id="lbImg" alt=""><button type="button" id="lbClose" aria-label="Close viewer">✕</button>
+    <figcaption class="lbnav" id="lbNav"><button type="button" id="lbPrev">← prev</button><span id="lbCount"></span><button type="button" id="lbNext">next →</button></figcaption>
+  </figure>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Aliza Abbasi · <a href="mailto:aaa582@drexel.edu">aaa582@drexel.edu</a></span>
+    <span>Opportunity cost of reading this: one set of squats.</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const lines = [
+    "I run on espresso and regressions.",
+    "I study how the world actually works.",
+    "Give me a case competition and a deadline.",
+    "I volunteer to present. Then I regret it. Then I do it again.",
+    "I love capturing the world through my own lens.",
+    "Curious how policy shows up in people's lives.",
+    "Probably out on a run right now.",
+    "Give me a hard question and a dataset."
+  ];
+  const el = document.getElementById("typed");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let i = 0;
+  el.textContent = lines[0];
+  (async () => {
+    while (true) {
+      const s = lines[i];
+      if (reduce) { el.textContent = s; await sleep(3200); }
+      else {
+        for (let k = 1; k <= s.length; k++) { el.textContent = s.slice(0, k); await sleep(55 + Math.random() * 40); }
+        await sleep(1800);
+        for (let k = s.length; k >= 0; k--) { el.textContent = s.slice(0, k); await sleep(25); }
+        await sleep(350);
+      }
+      i = (i + 1) % lines.length;
+    }
+  })();
+  const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg");
+  const decks = { fed: { n: 28, name: "Fed Challenge deck" }, pwc: { n: 17, name: "PwC case deck" }, econ350: { n: 13, name: "ECON 350 paper" }, dash: { n: 4, name: "URBN Looker Studio dashboards" }, coop: { n: 23, name: "URBN co-op presentation" }, infl: { n: 4, name: "Inflation and exchange rate charts" } };
+  let cur = null, idx = 0, lastBtn = null;
+  const pad = n => String(n).padStart(2, "0");
+  function show() {
+    if (cur.deck) { const d = decks[cur.deck]; lbImg.src = `decks/${cur.deck}/s-${pad(idx)}.jpg`; lbImg.alt = `${d.name}, page ${idx} of ${d.n}`; document.getElementById("lbCount").textContent = `${idx} / ${d.n}`; }
+    else { lbImg.src = cur.src; lbImg.alt = cur.alt; }
+    document.getElementById("lbNav").hidden = !cur.deck;
+  }
+  function openV(spec, from) { cur = spec; idx = spec.page || 1; lastBtn = from; show(); lb.hidden = false; document.getElementById("lbClose").focus(); }
+  function step(dlt) { if (!cur || !cur.deck) return; const n = decks[cur.deck].n; idx = ((idx - 1 + dlt + n) % n) + 1; show(); }
+  const closeLb = () => { lb.hidden = true; if (lastBtn) lastBtn.focus(); };
+  document.querySelectorAll(".cert[data-img]").forEach(c => c.addEventListener("click", () => openV({ src: c.dataset.img, alt: c.dataset.alt }, c)));
+  document.querySelectorAll("[data-deck]").forEach(c => c.addEventListener("click", () => openV({ deck: c.dataset.deck, page: +c.dataset.page }, c)));
+  document.getElementById("lbClose").addEventListener("click", closeLb);
+  document.getElementById("lbPrev").addEventListener("click", () => step(-1));
+  document.getElementById("lbNext").addEventListener("click", () => step(1));
+  lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", e => { if (lb.hidden) return; if (e.key === "Escape") closeLb(); if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); });
+  const btn = document.getElementById("reveal"), ans = document.getElementById("answer");
+  btn.addEventListener("click", () => { ans.hidden = !ans.hidden; btn.textContent = ans.hidden ? "Reveal my answer" : "Hide answer"; });
+})();
+</script>
+<script>
+(() => {
+  const script = [
+    { c: "whoami", o: ["aliza abbasi · economics @ drexel lebow"] },
+    { c: "cat fuel.txt", o: ["espresso, regressions, soccer"] },
+    { c: "Rscript model.R", o: ["lm(curiosity ~ espresso + soccer)", "R² = 0.99   p < 0.001"] },
+    { c: "python train_model.py", o: ["minor: AI/ML ✓  data science ✓", "<ok>✔ model trained, ready for real world data"] },
+    { c: "./find_next_challenge.sh", o: ["scanning case competitions...", "<ok>✔ new challenge accepted"] },
+    { c: "open camera.app", o: ["i love capturing the world through my own lens"] }
+  ];
+  const box = document.getElementById("term");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const esc = t => t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  function line(cls, txt) { const d = document.createElement("div"); d.className = cls; d.innerHTML = txt; box.appendChild(d); while (box.scrollHeight > box.clientHeight && box.firstChild) box.removeChild(box.firstChild); return d; }
+  function out(t) { return t.startsWith("<ok>") ? line("ok", esc(t.slice(4))) : line("o", esc(t)); }
+  if (reduce) { script.slice(0, 3).forEach(s => { line("", '<span class="p">$</span> ' + esc(s.c)); s.o.forEach(out); }); return; }
+  (async () => {
+    while (true) {
+      for (const s of script) {
+        const d = line("", '<span class="p">$</span> ');
+        for (const ch of s.c) { d.innerHTML += esc(ch); await sleep(60 + Math.random() * 50); }
+        await sleep(300);
+        for (const t of s.o) { out(t); await sleep(260); }
+        await sleep(1100);
+      }
+      await sleep(800); box.innerHTML = "";
+    }
+  })();
+})();
+</script>
+</body>
+</html>
